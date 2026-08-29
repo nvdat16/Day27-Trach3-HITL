@@ -26,13 +26,22 @@ from typing import TypedDict
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 
-from src.models import (
-    AGENT_ID,
-    SYSTEM_REVIEWER,
-    AuditEntry,
-    append_audit_entry,
-    now_iso,
-)
+try:
+    from src.models import (
+        AGENT_ID,
+        SYSTEM_REVIEWER,
+        AuditEntry,
+        append_audit_entry,
+        now_iso,
+    )
+except ModuleNotFoundError:
+    from models import (
+        AGENT_ID,
+        SYSTEM_REVIEWER,
+        AuditEntry,
+        append_audit_entry,
+        now_iso,
+    )
 
 # --------------------------------------------------------------------------
 # Policy constants

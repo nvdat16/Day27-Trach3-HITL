@@ -14,15 +14,26 @@ from uuid import uuid4
 
 import streamlit as st
 
-from src.graph import (
-    CONFIDENCE_THRESHOLD,
-    CUSTOMERS,
-    HIGH_RISK_ACTIONS,
-    HIGH_RISK_NODE,
-    build_graph,
-    thread_config,
-)
-from src.models import AGENT_ID, load_audit_log
+try:
+    from src.graph import (
+        CONFIDENCE_THRESHOLD,
+        CUSTOMERS,
+        HIGH_RISK_ACTIONS,
+        HIGH_RISK_NODE,
+        build_graph,
+        thread_config,
+    )
+    from src.models import AGENT_ID, load_audit_log
+except ModuleNotFoundError:
+    from graph import (
+        CONFIDENCE_THRESHOLD,
+        CUSTOMERS,
+        HIGH_RISK_ACTIONS,
+        HIGH_RISK_NODE,
+        build_graph,
+        thread_config,
+    )
+    from models import AGENT_ID, load_audit_log
 
 st.set_page_config(
     page_title="Churn Risk HITL Console",
